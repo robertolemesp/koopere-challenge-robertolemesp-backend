@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model QRCode {
+  id        String   @id @default(uuid())
+  metadata   String
+  createdAt DateTime @default(now())
+}

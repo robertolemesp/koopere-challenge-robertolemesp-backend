@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: development
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: "file:./dev.db"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "8080:8080"
+    command: sh -c "npx prisma db push --force-reset && npm run build && node dist/main"
