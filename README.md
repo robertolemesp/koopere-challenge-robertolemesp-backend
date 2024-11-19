@@ -51,16 +51,18 @@ $ gcloud config set run/region <REGION>
 # Configure permissions
 $ gcloud projects add-iam-policy-binding <PROJECT_NAME> --member="<SERVICE_ACCOUNT>" --role="roles/storage.objectViewer"
 
-#Create and then pull your Docker Image from Docker Hub
-docker pull url:version
+# Create and then pull your Docker Image from Docker Hub
+$ docker pull <IMAGE>:<VERSION>
+
+# Tag the image 
+$ docker-= tag  <IMAGE_TAG> gcr.io/ <PROJECT_ID>/<SERVICE_NAME>:<TVERSION_NAME>
 
 # Push the Image to Google Container Registry:
-$ docker push gcr.io/<PROJECT_ID>/<SERVICE_NAME>:<TAG_NAME>
+$ docker push gcr.io/<PROJECT_ID>/<SERVICE_NAME>:<VERSION_NAME>
 
 # Deploy the Image to Google Cloud Run:
-
 $ gcloud run deploy qrcode-api \
-  --image gcr.io/<PROJECT_ID>/qrcode-api:v1 \
+  --image gcr.io/<PROJECT_ID>/<SERVICE_NAME>:<VERSION_NAME> \
   --platform managed \
   --region <REGION> \
   --allow-unauthenticated \

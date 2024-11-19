@@ -27,7 +27,7 @@ jobs:
       # Set environment variables
       - name: Set Environment Variables
         env:
-          DATABASE_URL: "file:./dev.db" 
+          DATABASE_URL: "file:./prod.db" 
         run: echo "DATABASE_URL set to $DATABASE_URL"
   
       # # Run Prisma migrations
